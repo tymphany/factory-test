@@ -51,14 +51,14 @@ do
 	i=$(($i+50))
 done
 
-key1=$(awk 'NR==1 { getline ; print $3 }' $tmpfile1)
-btn_state1=$(awk 'NR==1 { getline ; print $4 }' $tmpfile1)
+key1=$(awk 'NR==2 { print $3 }' $tmpfile1)
+btn_state1=$(awk 'NR==2 { print $4 }' $tmpfile1)
 
 #echo "key1 : $key1"
 #echo "btn_state1 : $btn_state1"
 
-key2=$(awk 'NR==4 { getline ; print $3 }' $tmpfile2)
-btn_state2=$(awk 'NR==4 { getline ; print $4 }' $tmpfile2)
+key2=$(awk 'NR==5 { print $3 }' $tmpfile2)
+btn_state2=$(awk 'NR==5 { print $4 }' $tmpfile2)
 
 #echo "key2 : $key2"
 #echo "btn_state2 : $btn_state2"
