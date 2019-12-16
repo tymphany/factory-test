@@ -1,8 +1,9 @@
 #!/bin/sh
 # for button factory test
 keycode=$1
-tmpfile1=/data/button_temp1
-tmpfile2=/data/button_temp2
+mkdir -p /data/factory
+tmpfile1=/data/factory/button_temp1
+tmpfile2=/data/factory/button_temp2
 
 if [ -z "$1" ]; then
 	echo "FAIL: No Keycode input"

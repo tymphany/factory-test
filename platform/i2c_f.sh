@@ -3,10 +3,11 @@
 # input check list formal as:
 #   <Bus Number>   <Address>  <Component Name>
 # exp:
-#I2C-2 20 AMP-MA12070-1      
+#i2c-2 20 AMP-MA12070-1
 #
 checklist=$1
-buslist=/data/i2c-buslist
+mkdir -p /data/factory
+buslist=/data/factory/i2c-buslist
 
 if [ -z "$1" ]; then
 	echo "FAIL: No Checklist input!"
@@ -18,25 +19,50 @@ i2cdetect -l > $buslist
 
 busnum=$(wc -l < $buslist)
 
+# get line row context from file
+# get_lrf <line> <row> <file path>
+function get_lrf() {
+	awk -v line=$1 -v row=$2 'line==NR { print $row}' $3
+}
 echo "busnum : $busnum"
 
 while [ $busnum -gt 0 ]
 do
-	case $busnum in
-	    1) i2cnum=$(awk 'NR==1 {print $1}' $buslist | cut -c 5 );;
-	    2) i2cnum=$(awk 'NR==2 {print $1}' $buslist | cut -c 5 );;
-	    3) i2cnum=$(awk 'NR==3 {print $1}' $buslist | cut -c 5 );;
-	    4) i2cnum=$(awk 'NR==4 {print $1}' $buslist | cut -c 5 );;
-	    5) i2cnum=$(awk 'NR==5 {print $1}' $buslist | cut -c 5);;
-	    *) echo "FAIL: Out of range" break;;
-	esac
-	echo "i2cnum= $i2cnum"
-	detfile=/data/det-i2c-$i2cnum
+	if [ $busnum -le 5 ]; then
+		i2cnum=$(get_lrf $busnum 1 $buslist | cut -c 5 )
+	else
+		 echo "FAIL: i2c bus number out of range"
+	fi
+
+	detfile=/data/factory/det-i2c-$i2cnum
 	i2cdetect -y -r $i2cnum > $detfile
 
-	echo "$i2cnum"
-	echo "$detfile"
-
+	sed -i '1d' $detfile
+	sed -i 's/[^ ]*//' $detfile
 	busnum=$(($busnum-1))
-	echo "busnum: $busnum"
+done
+
+function clean_up() {
+# delect temp file
+	rm -f /data/factory/det-i2c-*
+	rm -f $buslist
+
+}
+
+checknum=$(wc -l < $checklist)
+
+echo "checknum : $checknum"
+while [ $checknum -gt 0 ]
+do
+	detfile=/data/factory/det-$(get_lrf $checknum 1 $checklist)
+	i2caddr=$(get_lrf $checknum 2 $checklist)
+	chipname=$(get_lrf $checknum 3 $checklist)
+
+	grep -q "$i2caddr" $detfile
+	if [ $? -eq 0 ]; then
+		echo "PASS: chip <$chipname> addr <$i2caddr> detected!"
+	else
+		echo "FAIL: chip <$chipname> addr <$i2caddr> can't detected!"
+	fi
+	checknum=$(($checknum-1))
 done
