@@ -1,7 +1,9 @@
 #!/bin/sh
 # check PA fault state
 #confpath=/data/factory/conf/pa_fault.conf
-confpath=./conf/pa_fault.conf
+SHELL_FOLD=$(dirname $0)
+BASE_FOLD=$SHELL_FOLD/..
+confpath=$SHELL_FOLD/conf/pa_fault.conf
 panum=$(wc -l < $confpath)
 
 # get line row context from file
@@ -15,7 +17,7 @@ do
 	gpionum=$(get_lrf $panum 1 $confpath)
 	paname=$(get_lrf $panum 2 $confpath)
 
-	./get_gpio_f.sh $gpionum
+	$BASE_FOD/platform/get_gpio_f.sh $gpionum
 	result=$?
 	if [ $reslut -lt 2 ]; then
 		echo "PASS: $paname state: $result "

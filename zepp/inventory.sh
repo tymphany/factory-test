@@ -10,6 +10,7 @@
 # i2c-3 ce KB-LED-IS31FL3196A 
 # EOF
 # ) > $checklist
-
-checklist=./conf/inventory.conf
-./../platform/i2c_f.sh $checklist
+SHELL_FOLD=$(dirname $0)
+BASE_FOLD=$SHELL_FOLD/..
+checklist=$SHELL_FOLD/conf/inventory.conf
+$BASE_FOLD/platform/i2c_f.sh $checklist
