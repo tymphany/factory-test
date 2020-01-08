@@ -1,15 +1,15 @@
 #!/bin/sh
 # for button factory test
-keycode=$1
+keylist=$1
 mkdir -p /data/factory
 tmpfile1=/data/factory/button_temp1
 tmpfile2=/data/factory/button_temp2
 
 if [ -z "$1" ]; then
-	echo "FAIL: No Keycode input"
+	echo "FAIL: No Key List input"
 	exit 1
 else
-	echo "test keycode : $1 "
+	echo "key lis path:  $1 "
 fi
 
 hexdump -n 48 /dev/input/event1 > $tmpfile1 &
@@ -17,7 +17,7 @@ pid1=$!
 hexdump -n 96 /dev/input/event1 > $tmpfile2 &
 pid2=$!
 
-function clean_up {
+function clean_up() {
 	# perform program exit housekeeping
 	rm -f $tmpfile1
 	rm -f $tmpfile2
@@ -35,6 +35,11 @@ function clean_up {
 
 trap clean_up 1 SIGHUP SIGINT SIGTERM
 
+function get_keyname() {
+	# grep index for targe keyname
+	# get_keyname <keycode> <keylist>
+	keyname=$(grep $1 $2 | cut -f2 -d' ')
+}
 
 
 timeout=10
@@ -63,23 +68,45 @@ btn_state2=$(awk 'NR==5 { print $4 }' $tmpfile2)
 
 #echo "key2 : $key2"
 #echo "btn_state2 : $btn_state2"
-
-if [ $1 -eq $key1 -a $btn_state1 -eq 1 ]; then
-	if [ $1 -eq $key2 -a $btn_state2 -eq 0 ]; then
-		echo "PASS: Button press or release event detected in ${timeout}s!"
-		clean_up 0
-	else
-		echo "FAIL: Can't detect Button release event in ${timeout}s!"
-	fi
+if [ -z "$key1" -a -z "$key2" ]; then
+	echo "FAIL: No Button press or release event in ${timeout}s!"
+	clean_up 1
+elif [ -z "$key2" ]; then
+	echo "FAIL: Only one key state detected in ${timeout}s!"
+	clean_up 1
 else
-	if [ -z "$key1" -a -z "$key2" ]; then
-		echo "FAIL: No Button press or release event in ${timeout}s!"
-	elif [ $1 -eq $key1 -a $btn_state1 -eq 0 ]; then
-		echo "FAIL: Can't detect Button press event in ${timeout}s!"
+	#print result 1
+	get_keyname $key1 $keylist
+
+	if [ -z $keyname ]; then
+		keyname=unknown_key
+	fi
+
+	if [ $btn_state1 -eq 1 ]; then
+		echo "$keyname press"
+	elif [ $btn_state1 -eq 0 ]; then
+		echo "$keyname release"
 	else
-		echo "FAIL: Wrong Button press or release in ${timeout}s!"
+		echo "FAIL: $keyname state 1 error"
+		clean_up 1
+	fi
+
+	# print result 2
+	get_keyname $key2 $keylist
+
+	if [ -z $keyname ]; then
+		keyname=unknown_key
+	fi
+
+	if [ $btn_state2 -eq 1 ]; then
+		echo "$keyname press"
+	elif [ $btn_state2 -eq 0 ]; then
+		echo "$keyname release"
+	else
+		echo "FAIL: $keyname state 2 error"
+		clean_up 1
 	fi
 fi
 
-clean_up 1
+clean_up 0
 
