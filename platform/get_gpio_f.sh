@@ -15,6 +15,6 @@ fi
 
 value=$(cat /sys/class/gpio/gpio$gpionum/value)
 
-echo "PASS: GPIO$gpionum value: $value"
+#echo "PASS: GPIO$gpionum value: $value"
 exit $value
 
