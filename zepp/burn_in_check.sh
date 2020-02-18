@@ -11,6 +11,7 @@ fi
 
 # set max volume
 mkdir -p /data/factory-test
+mkdir -p /run/factory-test
 cp -p /data/factory-test/dsp_test /run/factory-test/dsp_test
 chmod +x /run/factory-test/dsp_test
 /run/factory-test/dsp_test w 0x02C9 0x04 0x01 0x00 0x00 0x00
