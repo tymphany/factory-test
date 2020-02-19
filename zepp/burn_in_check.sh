@@ -20,7 +20,7 @@ chmod +x /run/factory-test/dsp_test
 #play pink noise
 while true 
 do
-	tinyplay /data/factory-test/pinknoise.wav
+	paplay /data/factory-test/pinknoise.wav
 	if [ $? -eq 1 ]; then
 		sleep 5s
 	fi
