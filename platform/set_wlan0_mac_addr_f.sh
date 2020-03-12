@@ -1,13 +1,13 @@
 #!/bin/sh
-# set Wifi-1 MAC address to NVRAM and wifi driver
+# set WLAN0 MAC address to NVRAM and wifi driver
 macpath=/persist/wlan_mac.bin
 drvpath=/usr/lib/modules/4.14.117/extra/wlan.ko
 if [ -z "$1" ]; then
-	echo "FAIL: Please input MAC address! "
+	echo "FAIL: Please input WLAN0 MAC address! "
 	exit 0
 fi
 
-nvram write wifi1_mac_addr $1
+nvram write WLAN0_MAC_ADDR $1
 
 if [ -e $macpath ]; then
 	oldmac=$(grep "Intf0MacAddress" $macpath | cut -d = -f2)
