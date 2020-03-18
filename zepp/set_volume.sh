@@ -1,8 +1,8 @@
 #!/bin/sh
 # Set volume
 # support "max" "mute" "0~max"
-# ./dsp_test w reg len value
-# ./dsp_test r reg len
+#                      [chip addr]  [reg addr]     [data]
+# i2ctransfer -y -f 2 w6@0xXX       0xXX 0xXX      0xXX 0xXX 0xXX 0xXX
 SHELL_FOLD=$(dirname $0)
 BASE_FOLD=$SHELL_FOLD/..
 confpath=$SHELL_FOLD/conf/volume.conf
@@ -30,4 +30,4 @@ fi
 
 volumedata=$(get_lf $vol $confpath)
 
-$BASE_FOLD/platform/dsp_test w 0x02C9 0x04 $volumedata
+i2ctransfer -y -f 2 w6@0x3b 0x00 0xa5  $volumedata
