@@ -16,7 +16,8 @@ while [ $panum -gt 0 ]
 do
 	gpionum=$(get_lrf $panum 1 $confpath)
 	paname=$(get_lrf $panum 2 $confpath)
-
+	echo $gpionum  > /sys/class/gpio/export
+	
 	$BASE_FOLD/platform/get_gpio_f.sh $gpionum
 	result=$?
 	if [ $result -lt 2 ]; then
@@ -24,6 +25,7 @@ do
 	else
 		echo "FAIL: $paname read error <$result>"
 	fi
+	echo $gpionum > /sys/class/gpio/unexport
 	panum=$(($panum-1))
 done
 
