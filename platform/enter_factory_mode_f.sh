@@ -4,3 +4,5 @@ mkdir -p /data/db_bk
 
 mv /data/adk.led.db /data/db_bk
 
+pkill led-manager
+
