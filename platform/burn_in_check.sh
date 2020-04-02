@@ -9,12 +9,12 @@ else
 	exit 0
 fi
 
-# set max volume
-i2ctransfer -y -f 2 w6@0x3b  0x00 0xa5  0x01 0x00 0x00 0x00
-
 #play pink noise
 while true 
 do
+	# set max volume
+	i2ctransfer -y -f 2 w6@0x3b  0x00 0xa5  0x01 0x00 0x00 0x00
+
 	paplay /data/factory-test/pinknoise.wav
 	if [ $? -eq 1 ]; then
 		sleep 5s
