@@ -7,3 +7,6 @@ mkdir -p /data/factory-test
 cp -p $SHELL_FOLD/conf/burn_in.conf /data/factory-test/burn_in.conf
 cp -p $BASE_FOLD/platform/data/pinknoise.wav /data/factory-test/pinknoise.wav
 
+if [ $? -eq 0 ]; then 
+	echo "OK"
+fi

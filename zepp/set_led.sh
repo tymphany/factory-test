@@ -20,6 +20,10 @@ if [[ $1 == "all" ]]; then
 		$BASE_FOLD/platform/led_f_ctrl.sh $leddrv $2 $3 $4
 		i=$(($i+1))
 	done
+
+	if [ $? -eq 0 ]; then 
+		echo "OK"
+	fi
 else
 	grep -q $1 $confpath
 	if [ $? -eq 0 ]; then
@@ -32,5 +36,8 @@ else
 	leddrv=$(get_lrf $ledconfline 2 $confpath)
 
 	$BASE_FOLD/platform/led_f_ctrl.sh $leddrv $2 $3 $4
-	exit $?
+
+	if [ $? -eq 0 ]; then 
+		echo "OK"
+	fi
 fi

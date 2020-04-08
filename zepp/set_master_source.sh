@@ -22,3 +22,7 @@ case $1 in
 esac
 
 i2ctransfer -y -f 2 w6@0x3b  0x01 0xb0  0x00 0x00 0x00 $source
+
+if [ $? -eq 0 ]; then 
+	echo "OK"
+fi

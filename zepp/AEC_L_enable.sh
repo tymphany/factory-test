@@ -6,3 +6,7 @@ SHELL_FOLD=$(dirname $0)
 BASE_FOLD=$SHELL_FOLD/..
 
 $BASE_FOLD/platform/dsp_test w 0x0328 0x04 0x00 0x00 0x00 0x01
+
+if [ $? -eq 0 ]; then 
+	echo "OK"
+fi

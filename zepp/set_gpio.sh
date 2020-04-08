@@ -21,4 +21,7 @@ fi
 gpionum=$(get_lrf $gpioindex 2 $confpath)
 
 $BASE_FOLD/platform/set_gpio_f.sh $gpionum $2
-exit $?
+
+if [ $? -eq 0 ]; then 
+	echo "OK"
+fi
