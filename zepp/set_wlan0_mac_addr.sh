@@ -1,6 +1,9 @@
 #!/bin/sh
 # Set WLAN0 MAC ADDR
-
+# formal: 6bytes hex number
+# XXXXXXXXXX
+# exp:
+# 000AF5898FF
 SHELL_FOLD=$(dirname $0)
 BASE_FOLD=$SHELL_FOLD/..
 

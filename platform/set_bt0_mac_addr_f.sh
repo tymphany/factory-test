@@ -9,7 +9,8 @@ if [ -z "$1" ]; then
 	exit 0
 fi
 
-nvram write BT0_MAC_ADDR $1
+# temporary disable nvram for EVT stage
+# nvram write BT0_MAC_ADDR $1
 rm /data/misc/bluetooth/.bt_nv.bin
 btnvtool -b $1
 adk-message-send 'connectivity_bt_disable{}'

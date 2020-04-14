@@ -7,7 +7,8 @@ if [ -z "$1" ]; then
 	exit 0
 fi
 
-nvram write WLAN0_MAC_ADDR $1
+# temporary disable nvram for EVT stage
+# nvram write WLAN0_MAC_ADDR $1
 
 if [ -e $macpath ]; then
 	oldmac=$(grep "Intf0MacAddress" $macpath | cut -d = -f2)
