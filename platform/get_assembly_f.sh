@@ -1,6 +1,7 @@
 #!/bin/sh
 # get ASSEMBLY No. from NVRAM
 
-nvram read ASSEMBLY
-echo " "
+cat /data/sn.txt
+#nvram read ASSEMBLY
+#echo " "
 
