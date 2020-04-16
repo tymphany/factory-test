@@ -1,7 +1,7 @@
 #!/bin/sh
 # close mic record
 if [ ! -z "$1" ]; then
-	sleep $1
+	sleep $(($1+11))
 fi
 PID=$(ps -e | grep tinycap | awk '1==NR{printf $1}')
 

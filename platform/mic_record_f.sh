@@ -1,6 +1,10 @@
-#!/bin/sh
+#/bin/sh
 # Mic record, record 4 channel audio to /data/factory-test/mic-4ch.wav
+recordpath=/data/factory-test/mic-4ch.wav
 mkdir -p /data/factory-test
+if [ -e $recordpath ]; then
+	rm $recordpath
+fi
 
 tinymix set "MultiMedia1 Mixer VA_CDC_DMA_TX_0" "1" 
 tinymix set "VA_CDC_DMA_TX_0 Channels" "Four"
@@ -13,4 +17,4 @@ tinymix set "VA DMIC MUX1" "DMIC1"
 tinymix set "VA DMIC MUX2" "DMIC2"
 tinymix set "VA DMIC MUX3" "DMIC3"
 
-tinycap /data/factory-test/mic-4ch.wav -c 4
+tinycap $recordpath -c 4
