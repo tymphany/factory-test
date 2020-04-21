@@ -17,4 +17,4 @@ tinymix set "VA DMIC MUX1" "DMIC1"
 tinymix set "VA DMIC MUX2" "DMIC2"
 tinymix set "VA DMIC MUX3" "DMIC3"
 
-tinycap $recordpath -c 4
+tinycap $recordpath -c 4 -t $1
