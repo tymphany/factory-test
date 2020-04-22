@@ -7,7 +7,7 @@
 #
 #NOTICE: I2C address using 7bit more and number as hex form !!!
 checklist=$1
-mkdir -p /data/factory
+mkdir -p /run/factory
 
 if [ -z "$1" ]; then
 	echo "FAIL: No Checklist input!"
@@ -24,7 +24,7 @@ function get_lrf() {
 # det_addr <I2c bus number> <I2C address>
 function check_i2c_addr() {
 
-	detfile=/data/factory/det-i2c
+	detfile=/run/factory/det-i2c
 	i2cnum=$(get_lrf $1 1 $2 | cut -c 5 )
 	i2caddr=$(get_lrf $1 2 $2)
 
@@ -46,7 +46,7 @@ function check_i2c_addr() {
 
 function clean_up() {
 # delect temp file
-	rm -f /data/factory/det-i2c
+	rm -f /run/factory/det-i2c
 }
 
 checknum=$(wc -l < $checklist)
@@ -63,3 +63,6 @@ do
 	fi
 	checknum=$(($checknum-1))
 done
+
+clean_up
+

@@ -6,6 +6,8 @@ SHELL_FOLD=$(dirname $0)
 BASE_FOLD=$SHELL_FOLD/..
 
 /usr/bin/znxg-cal.bin
+
+sleep 1
 # bypass crossover section
 i2ctransfer -y -f 2 w6@0x3b  0x01 0xb9  0x00 0x00 0x00 0x00
 
