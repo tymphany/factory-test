@@ -3,9 +3,7 @@
 SHELL_FOLD=$(dirname $0)
 BASE_FOLD=$SHELL_FOLD/..
 
-pkill -f parec
-pkill -f pacat
-pkill -f "spdif_on"
+$BASE_FOLD/platform/spdif_off_f.sh
 
 if [ $? -eq 0 ]; then 
 	echo "OK"

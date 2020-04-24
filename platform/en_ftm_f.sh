@@ -13,5 +13,5 @@ do
 	ifconfig wlan0 up
 done
 echo 5 > /sys/module/wlan/parameters/con_mode
-ftmdaemon -n -dd  &
+ftmdaemon -n -dd  
 

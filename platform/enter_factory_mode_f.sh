@@ -10,7 +10,7 @@ mv /data/allplay.db /data/db_bk
 mv /data/spotify.db /data/db_bk
 mv /data/adk.mediaplayer.db /data/db_bk
 mv /data/adk.rules.db /data/db_bk
-mv /data/adk.devices.db /data/db_bk
+mv /data/adk.device.db /data/db_bk
 mv /data/adk.voiceui.db /data/db_bk
 
 sync
