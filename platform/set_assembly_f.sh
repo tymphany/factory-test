@@ -5,6 +5,6 @@ if [ -z "$1" ]; then
 	exit 0
 fi
 
-echo "$1" > /data/sn.text
+echo "$1" > /data/sn.txt
 #nvram write ASSEMBLY $1
 
