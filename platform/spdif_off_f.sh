@@ -1,7 +1,6 @@
 #!/bin/sh
 # spdif off
 
-pkill -f parec
-pkill -f pacat
+pkill -f "gst-launch-1.0"
 pkill -f "spdif_on"
 
