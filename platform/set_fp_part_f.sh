@@ -1,9 +1,9 @@
 #!/bin/sh
 # set FP PART to NVRAM
-if [ -z "$1" ]; then
+if [ -z "$2" ]; then
 	echo "FAIL: Please input FP PART! "
 	exit 0
 fi
 
-nvram write FP_PART $1
+sed -i "4s/.*/FP_PART $1/g" $2
 

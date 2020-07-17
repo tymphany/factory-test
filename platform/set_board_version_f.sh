@@ -1,9 +1,10 @@
 #!/bin/sh
 # set BOARD VERSION to NVRAM
-if [ -z "$1" ]; then
+if [ -z "$2" ]; then
 	echo "FAIL: Please input BOARD VERSION! "
 	exit 0
 fi
 
-nvram write BOARD_VERSION $1
+sed -i "3s/.*/BOARD_VERSION $1/g" $2
+#nvram write BOARD_VERSION $1
 

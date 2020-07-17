@@ -1,6 +1,6 @@
 #!/bin/sh
-# get BOARD VERSION from NVRAM
+# get BOARD VERSION from /data/product/
 
-nvram read BOARD_VERSION
-echo " "
+sed -n "3p" $1
+
 

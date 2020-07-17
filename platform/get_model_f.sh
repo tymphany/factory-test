@@ -1,6 +1,6 @@
 #!/bin/sh
 # get MODEL name
 
-nvram read MODEL
+sed -n "1p" $1
 echo " "
 

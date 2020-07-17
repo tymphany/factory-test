@@ -1,6 +1,6 @@
 #!/bin/sh
-# get WLAN1 MAC address from NVRAM
+# get WLAN1 MAC address from /data/product/
 
-nvram read WLAN1_MAC_ADDR
+sed -n "9p" $1
 echo " "
 

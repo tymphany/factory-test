@@ -8,6 +8,7 @@ macpath=/data/misc/bluetooth/.bt_nv.bin
 #	echo "bt0 using default mac address now"
 #fi
 getprop persist.vendor.service.bdroid.bdaddr 
+sed -n "13p" $1
 
 # temporary disable nvram for EVT stage
 # nvram read BT0_MAC_ADDR

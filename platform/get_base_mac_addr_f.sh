@@ -1,6 +1,5 @@
 #!/bin/sh
 # get BASE MAC ADDR
 
-nvram read BASE_MAC_ADDR
+sed -n "6p" $1
 echo " "
-

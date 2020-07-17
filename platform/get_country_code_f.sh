@@ -1,6 +1,6 @@
 #!/bin/sh
 # get COUNTRY CODE
 
-nvram read COUNTRY_CODE
+sed -n "5p" $1
 echo " "
 

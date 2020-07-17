@@ -1,9 +1,8 @@
 #!/bin/sh
-# set UNUSED0 to NVRAM
-if [ -z "$1" ]; then
+# set UNUSED0 to /data/product/
+if [ -z "$2" ]; then
 	echo "FAIL: Please UNUSED0! "
 	exit 0
 fi
 
-nvram write UNUSED0 $1
-
+sed -i "11s/.*/UNUSED0 $1/g" $2

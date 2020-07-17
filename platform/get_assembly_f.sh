@@ -1,7 +1,6 @@
 #!/bin/sh
-# get ASSEMBLY No. from NVRAM
+# get ASSEMBLY No. from /data/product/
 
-cat /data/sn.txt
-#nvram read ASSEMBLY
-#echo " "
+sed -n "2p" $1
 
+echo " "

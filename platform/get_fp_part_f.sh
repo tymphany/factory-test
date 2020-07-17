@@ -1,6 +1,6 @@
 #!/bin/sh
 # get FP PART
 
-nvram read FP_PART
+sed -n "4p" $1
 echo " "
 

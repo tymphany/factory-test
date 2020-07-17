@@ -1,6 +1,6 @@
 #!/bin/sh
 # get UNUSED0
 
-nvram read UNUSED0
+sed -n "11p" $1
 echo " "
 
