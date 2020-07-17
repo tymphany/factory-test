@@ -12,11 +12,11 @@ fi
 # temporary disable nvram for EVT stage
 # nvram write BT0_MAC_ADDR $1
 
-#rm /data/misc/bluetooth/.bt_nv.bin
-#btnvtool -b $1
+rm /data/misc/bluetooth/.bt_nv.bin
+btnvtool -b $1 -n
 
-sed -i "13s/.*/BT0_MAC_ADDR $1/g" $2
-setprop persist.vendor.service.bdroid.bdaddr $1
+#sed -i "13s/.*/BT0_MAC_ADDR $1/g" $2
+#setprop persist.vendor.service.bdroid.bdaddr $1
 
-adk-message-send 'connectivity_bt_disable{}'
-adk-message-send 'connectivity_bt_enable{}'
+#adk-message-send 'connectivity_bt_disable{}'
+#adk-message-send 'connectivity_bt_enable{}'
