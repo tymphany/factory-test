@@ -1,6 +1,6 @@
 #!/bin/sh
 # set WLAN0 MAC address to NVRAM and wifi driver
-macpath=/persist/wlan_mac.bin
+macpath=/persist/factory/wlan/wlan_mac.bin
 drvpath=/usr/lib/modules/4.14.117/extra/wlan.ko
 if [ -z "$2" ]; then
 	echo "FAIL: Please input WLAN0 MAC address! "
