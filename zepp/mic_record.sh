@@ -9,6 +9,6 @@ if [ -z "$1" ]; then
 	exit 0
 fi
 
-echo "OK"
 $BASE_FOLD/platform/mic_record_f.sh $1
 
+echo "OK"
