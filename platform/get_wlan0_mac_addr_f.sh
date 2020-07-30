@@ -1,7 +1,8 @@
 #!/bin/sh
 # get WLAN0 MAC address
 
-macpath=/persist/wlan_mac.bin
+mkpath=/persist/factory/wlan
+macpath=$mkpath/wlan_mac.bin
 
 if [ -e $macpath ]; then
 	macaddr=$(grep "Intf0MacAddress" $macpath | cut -d = -f2)
