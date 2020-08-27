@@ -14,7 +14,7 @@ fi
 
 rm /data/misc/bluetooth/.bt_nv.bin
 echo $1 > /persist/factory/bluetooth/bdaddr.txt
-sed -i "13s/.*/BT0_MAC_ADDR $1/g" $2
+#sed -i "13s/.*/BT0_MAC_ADDR $1/g" $2
  
 adk-message-send 'connectivity_bt_disable{}'
 
