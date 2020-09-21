@@ -6,6 +6,7 @@
 # 70:c9:4e:9b:64:11
 # $1: addr
 # $2: write path
+# for adk 1.2 
 
 if [ -z "$1" ]; then
         echo "FAIL: Please input BT MAC ADDR! examle: 70:c9:4e:9b:64:11"
