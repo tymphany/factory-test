@@ -4,7 +4,7 @@
 begin_addr=0x00
 
 if [ -z "$1" ]; then
-        echo "FAIL: Please input reg addr! examle: get_touch_counter.sh 0x00"
+        echo "FAIL: Please input reg addr! examle: get_touch_counter.sh mute/mufunction/pair"
         exit 0
 fi
 
@@ -35,6 +35,9 @@ function getVL()
     i2cget -y -f 2 0x08 $1
 }
 
+i2cset -f -y 2 0x08 0x0C 1
+sleep 1
+
 low8bit=`expr $(($begin_addr)) + 1`
 
 VH=`getVH $begin_addr`
@@ -42,3 +45,7 @@ VL=`getVL $low8bit`
 
 value=`expr $(($VH<<8)) + $(($VL))`
 echo $value
+
+sleep 1
+
+i2cset -f -y 2 0x08 0x0C 0
