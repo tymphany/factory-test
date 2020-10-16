@@ -11,7 +11,7 @@ function get_lf() {
 	awk -v line=$1 'line==NR { print $0}' $2
 }
  
-volumedata=$(i2ctransfer -y -f 2 w2@0x3b 0x00 0xa5 r4)
+volumedata=$(i2ctransfer -y -f 2 w2@0x3b 0x00 0xb0 r4)
 volumedata=$(echo $volumedata | tr [a-z] [A-Z])
 
 maxvolstep=$(wc -l < $confpath)
