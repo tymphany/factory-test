@@ -27,7 +27,7 @@ else
       fi
 fi
 echo "charger check ${a: 8} "
-sleep 3s
+sleep 1s
 done
 
 
