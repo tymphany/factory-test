@@ -1,43 +1,21 @@
-#!/bin/sh
-#set LED by name, base on config file
-# set_led.sh <LED name>  <r brightness>  <g brightness> <b brightness>
-SHELL_FOLD=$(dirname $0)
-BASE_FOLD=$SHELL_FOLD/..
-confpath=$SHELL_FOLD/conf/led.conf
+# contrl LED with LED name.
+#                 $1             $2
+# led_f_ctrl.sh <LED name>  <R brightness>
 
-# get line row context from file
-# get_lrf <line> <row> <file path>
-function get_lrf() {
-	awk -v line=$1 -v row=$2 'line==NR { print $row}' $3
-}
+if [[ $# -lt 2 ]]; then
+	echo "FAIL: lack parameter"
+	exit 1
+fi
 
-if [[ $1 == "all" ]]; then
-	lednum=$(wc -l < $confpath)
-	i=1
-	while [ $i -le $lednum ]
-	do
-		leddrv=$(get_lrf $i 2 $confpath)
-		$BASE_FOLD/platform/led_f_ctrl.sh $leddrv $2 $3 $4
-		i=$(($i+1))
-	done
+if [[ $# -gt 2 ]]; then
+	echo "FAIL: too much parameter"
+	exit 1
+fi
 
-	if [ $? -eq 0 ]; then 
-		echo "OK"
-	fi
+if [[ $2 -gt 255 ]] || [[ $2 -lt 0 ]]
+then
+	echo "FAIL: Wrong Brightness Value"
+	exit 1
 else
-	grep -q $1 $confpath
-	if [ $? -eq 0 ]; then
-		ledconfline=$(grep -n $1 $confpath | cut -d : -f 1)
-	else
-		echo "FAIL: unkown LED name !"
-		exit 1
-	fi
-
-	leddrv=$(get_lrf $ledconfline 2 $confpath)
-
-	$BASE_FOLD/platform/led_f_ctrl.sh $leddrv $2 $3 $4
-
-	if [ $? -eq 0 ]; then 
-		echo "OK"
-	fi
+	echo $2 > /sys/class/leds/$1/brightness
 fi
