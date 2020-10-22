@@ -9,7 +9,7 @@ if [ -z "$1" ]; then
 fi
 
 # temporary disable nvram for EVT stage
-#sed -i "8s/.*/WLAN0_MAC_ADDR $1/g" $2
+sed -i "8s/.*/WLAN0_MAC_ADDR $1/g" $2
 
 if [ -e $macpath ]; then
 	oldmac=$(grep "Intf0MacAddress" $macpath | cut -d = -f2)
