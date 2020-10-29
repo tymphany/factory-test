@@ -12,10 +12,17 @@ else
 	echo "key lis path:  $1 "
 fi
 
-hexdump -n 48 /dev/input/event1 > $tmpfile1 &
-pid1=$!
-hexdump -n 96 /dev/input/event1 > $tmpfile2 &
-pid2=$!
+if [ -z "$2" ]; then
+	hexdump -n 48 /dev/input/event1 > $tmpfile1 &
+	pid1=$!
+	hexdump -n 96 /dev/input/event1 > $tmpfile2 &
+	pid2=$!
+else
+	hexdump -n 48 /dev/input/$2 > $tmpfile1 &
+	pid1=$!
+	hexdump -n 96 /dev/input/$2 > $tmpfile2 &
+	pid2=$!
+fi
 
 function clean_up() {
 	# perform program exit housekeeping
