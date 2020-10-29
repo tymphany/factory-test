@@ -8,3 +8,5 @@ $BASE_FOLD/platform/exit_factory_mode_f.sh
 if [ $? -eq 0 ]; then 
 	echo "OK"
 fi
+
+systemctl restart led-manager
