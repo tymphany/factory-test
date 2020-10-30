@@ -1,1 +1,1 @@
-tiny play $1
+tinyplay $1
