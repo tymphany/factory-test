@@ -3,6 +3,6 @@
 SHELL_FOLD=$(dirname $0)
 BASE_FOLD=$SHELL_FOLD/..
 
-$BASE_FOLD/platform/enter_factory_mode_f.sh
+adk-message-send 'system_mode_management {name: "Test::ForceOffLeds"}'
 
 echo "OK"
