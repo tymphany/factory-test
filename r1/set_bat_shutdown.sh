@@ -1,0 +1,9 @@
+#!/bin/sh
+
+a=`i2ctransfer -y -f 5 w3@0x0b 0x00 0x10 0x00`
+sleep 1
+a=`i2ctransfer -y -f 5 w3@0x0b 0x00 0x10 0x00`
+
+
+echo "battery is shut"
+

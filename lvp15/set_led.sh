@@ -27,7 +27,7 @@ if [[ $1 == "all" ]]; then
 else
 	grep -q $1 $confpath
 	if [ $? -eq 0 ]; then
-		ledconfline=$(grep -n $1 $confpath | cut -d : -f 1)
+		ledconfline=$(grep -wn $1 $confpath | cut -d : -f 1)
 	else
 		echo "FAIL: unkown LED name !"
 		exit 1
