@@ -12,5 +12,5 @@ else
 fi
 # temporary disable nvram for EVT stage
 # nvram read WLAN0_MAC_ADDR
-sed -n "8p" $1
-echo " "
+#sed -n "8p" $1
+#echo " "
