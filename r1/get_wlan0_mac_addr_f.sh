@@ -9,6 +9,9 @@ if [ -e $macpath ]; then
 	echo "$macaddr"
 else
 	echo "Wlan0 using default mac address now"
+	IFACE=wlan0
+	read MAC </sys/class/net/$IFACE/address
+	echo $IFACE $MAC	
 fi
 # temporary disable nvram for EVT stage
 # nvram read WLAN0_MAC_ADDR
