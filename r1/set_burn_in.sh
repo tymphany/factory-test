@@ -6,7 +6,8 @@
 SHELL_FOLD=$(dirname $0)
 BASE_FOLD=$SHELL_FOLD/..
 
-echo 0 > /sys/class/leds/CONNECT_g/brightness
+echo 0   > /sys/class/leds/CONNECT_g/brightness
+echo 255 > /sys/class/leds/CONNECT_b/brightness
 
 echo $1 > $SHELL_FOLD/conf/burn_in.conf
 mkdir -p /data/factory-test
@@ -55,6 +56,7 @@ do
 		if [ $times -lt 0 ]; then
 			echo "Burning test is completed."
 			echo 255 > /sys/class/leds/CONNECT_g/brightness
+			echo 0   > /sys/class/leds/CONNECT_b/brightness
 			exit 0
 		fi
 	fi		

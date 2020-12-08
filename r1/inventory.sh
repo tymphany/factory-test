@@ -13,4 +13,4 @@
 SHELL_FOLD=$(dirname $0)
 BASE_FOLD=$SHELL_FOLD/..
 checklist=$SHELL_FOLD/conf/inventory.conf
-$BASE_FOLD/platform/i2c_f.sh $checklist
+$BASE_FOLD/r1/i2c_f.sh $checklist
