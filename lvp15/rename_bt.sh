@@ -11,7 +11,9 @@ rm $bt_name_path/bt_app.conf.back
 systemctl restart btapp
 mount -o remount,ro /
 
-adkcfg -f /data/adk.connectivity.bt.db write connectivity.bt.device_name "$1" --ignore
+if [ -e /data/dk.connectivity.bt.db ];then
+	adkcfg -f /data/adk.connectivity.bt.db write connectivity.bt.device_name "$1" --ignore
+fi
 
 sleep 0.5s
 
