@@ -3,6 +3,7 @@
 #       NTC_0x49_DETECT
 #
 
+killall ntc_manager
 echo 47 > /sys/class/gpio/export
 echo in > /sys/class/gpio/gpio47/direction
 GPIO_STATUS=`cat /sys/class/gpio/gpio47/value`
@@ -32,4 +33,4 @@ GPIO_STATUS=`cat /sys/class/gpio/gpio47/value`
 #fi
 
 echo 47 > /sys/class/gpio/unexport
-
+/usr/bin/ntc_manager &
