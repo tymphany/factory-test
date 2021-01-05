@@ -18,6 +18,6 @@ function do_recovery() {
 	exit 13
 }
 
-/ota/ota-backups.sh
+/ota/ota-backups.sh > /dev/null 2>&1
 
 do_recovery $1
