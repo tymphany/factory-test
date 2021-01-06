@@ -14,6 +14,11 @@ if [ -z "$1" ]; then
 fi
 
 rm /data/misc/bluetooth/.bt_nv.bin
+if [ ! -e /persist/factory/bluetooth/bdaddr.txt ]; then
+        mkdir /persist/factory/bluetooth/
+        touch /persist/factory/bluetooth/bdaddr.txt
+fi
+
 echo $1 > /persist/factory/bluetooth/bdaddr.txt
 sed -i "13s/.*/BT0_MAC_ADDR $1/g" $2
  
