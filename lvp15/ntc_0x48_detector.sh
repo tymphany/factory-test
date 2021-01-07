@@ -33,4 +33,4 @@ GPIO_STATUS=`cat /sys/class/gpio/gpio47/value`
 #fi
 
 echo 47 > /sys/class/gpio/unexport
-/usr/bin/ntc_manager &
+#/usr/bin/ntc_manager &
