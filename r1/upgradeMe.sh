@@ -11,6 +11,7 @@ function do_recovery() {
 		echo "OTA success"
 		sleep 2
 		rm /cache/recovery -fr
+		echo "" > /data/ota-successed
 		reboot
 	else
 		echo "OTA fail"
