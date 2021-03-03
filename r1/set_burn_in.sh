@@ -64,7 +64,7 @@ do
 	# set DSP volume
 	#  i2ctransfer -y -f 2 w6@0x3b 0x00 0xa3 0x01 0x00 0x00 0x00
 	echo "Playing pink noise now at volume 0.4. $times Cycles left."
-	paplay /data/factory-test/pinknoise.wav
+	/etc/factory-test/r1/play_file.sh /data/factory-test/pinknoise.wav
 	if [ $? -eq 1 ]; then
 		sleep 5s
 	fi
