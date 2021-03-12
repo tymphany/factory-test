@@ -1,7 +1,7 @@
 #/bin/sh
 # Enter Wifi/BT FTM test mode
 
-insmod /usr/lib/modules/4.14.117-perf/extra/wlan.ko
+insmod /usr/lib/modules/4.14.117/extra/wlan.ko
 ifconfig wlan0 up
 while true 
 do 
