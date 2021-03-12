@@ -17,5 +17,6 @@ then
 	echo "FAIL: Wrong Brightness Value"
 	exit 1
 else
+    echo "OK"
 	echo $2 > /sys/class/leds/$1/brightness
 fi
