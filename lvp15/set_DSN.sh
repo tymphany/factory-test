@@ -7,7 +7,13 @@ if [ -z "$1" ]; then
 	exit 0
 fi
 
-sed -i "5c DEVICE_SN $1" $INFO_PATH/lvp15.txt
+if [ ! -f "$INFO_PATH/lvp15_DEVICE_SN.txt" ]; then
+   touch $INFO_PATH/lvp15_DEVICE_SN.txt
+   echo "Don't have lvp15.txt, touch new "
+   echo "DEVICE_SN $1" > $INFO_PATH/lvp15_DEVICE_SN.txt
+else
+   echo "DEVICE_SN $1" > $INFO_PATH/lvp15_DEVICE_SN.txt
+fi
 
+sync
 echo OK
-

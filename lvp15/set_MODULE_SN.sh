@@ -7,7 +7,13 @@ if [ -z "$1" ]; then
 	exit 0
 fi
 
-sed -i "4c MODULE_SN $1" $INFO_PATH/lvp15.txt
+if [ ! -f "$INFO_PATH/lvp15.txt" ]; then
+   touch $INFO_PATH/lvp15.txti
+   echo "Don't have lvp15.txt, touch new "
+   echo "MODULE_SN $1" > $INFO_PATH/lvp15.txt
+else
+   echo "MODULE_SN $1" > $INFO_PATH/lvp15.txt
+fi
 
+sync
 echo OK
-
