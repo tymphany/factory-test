@@ -12,7 +12,7 @@ function do_recovery() {
 		sleep 2
 		rm /cache/recovery -fr
 		echo "" > /data/ota-successed
-		reboot
+		/etc/exitscripts/board-script/reboot.sh
 	else
 		echo "OTA fail"
 	fi
