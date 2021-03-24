@@ -15,6 +15,8 @@ if [ -e /data/adk.connectivity.bt.db ];then
 	adkcfg -f /data/adk.connectivity.bt.db write connectivity.bt.device_name "$1" --ignore
 fi
 
+/etc/initscripts/get_friendly_name.sh 1 $1
+
 sleep 0.5s
 
 echo "OK"

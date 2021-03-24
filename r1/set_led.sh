@@ -18,4 +18,10 @@ then
 	exit 1
 else
 	echo $2 > /sys/class/leds/$1/brightness
+	if [ "$?" -ne 0 ]
+	then
+		echo "FAIL: Wrong LED Name"
+	else
+		echo "OK"
+	fi
 fi
