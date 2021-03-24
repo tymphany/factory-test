@@ -9,3 +9,4 @@
 ::after initlizition
 :: the first parameter is the recording time (s)
 @adb shell /etc/factory-test/r1/mic_record_start.sh  %1
+
