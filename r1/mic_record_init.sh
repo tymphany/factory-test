@@ -1,3 +1,5 @@
+
+#mic recording precudere start running indication
 echo 254 > /sys/class/leds/ACTION_g/brightness
 echo 254 > /sys/class/leds/ACTION_r/brightness
 echo 0 > /sys/class/leds/VOL-_g/brightness
@@ -11,6 +13,8 @@ echo 0 > /sys/class/leds/Mute_r/brightness
 
 /etc/factory-test/platform/mic_record_init_f.sh
 
+# mic initializatoin finished 
 echo 254 > /sys/class/leds/VOL-_g/brightness
 echo 254 > /sys/class/leds/VOL-_r/brightness
+
 
