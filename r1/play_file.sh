@@ -1,6 +1,6 @@
 #define 
-#default volume value
-sound_value="-30"
+#default volume value is max value
+sound_value="0"
 input_value=$2
 
 if [ $input_value -ge 10 ];then
