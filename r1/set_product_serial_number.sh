@@ -9,6 +9,7 @@ then
 	echo FAIL
 else
 	sed -i "5c PRODUCT_SN $1" $INFO_PATH/r1.txt
+	echo $1 > /etc/adb_devid
 	echo OK	
 fi
 
