@@ -8,11 +8,11 @@ function do_recovery() {
 	#echo "Finish to run recovery `date`"
 	tail -n 8 /cache/recovery/last_log | grep -q "Recovery exiting, upgrade success!"
 	if [ $? -eq 0 ]; then
+		echo "" > /data/ota-successed
 		echo "OTA success"
 		sleep 2
 		rm /cache/recovery -fr
 		rm /data/$1
-		echo "" > /data/ota-successed
 		#reboot
 	else
 		echo "OTA fail"
