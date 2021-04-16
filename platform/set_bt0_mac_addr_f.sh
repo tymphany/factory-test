@@ -20,8 +20,10 @@ if [ ! -e /persist/factory/bluetooth/bdaddr.txt ]; then
 fi
 
 echo $1 > /persist/factory/bluetooth/bdaddr.txt
-sed -i "13s/.*/BT0_MAC_ADDR $1/g" $2
- 
+
+sync
+sleep 0.3
+echo "sync ok"
 adk-message-send 'connectivity_bt_disable{}'
 
 sleep 3s

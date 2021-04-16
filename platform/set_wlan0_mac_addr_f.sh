@@ -8,10 +8,8 @@ if [ -z "$1" ]; then
 	exit 0
 fi
 
-# temporary disable nvram for EVT stage
-sed -i "8s/.*/WLAN0_MAC_ADDR $1/g" $2
-
 if [ -e $macpath ]; then
+        rm /persist/factory/wlan/wlan_mac.bin
 	oldmac=$(grep "Intf0MacAddress" $macpath | cut -d = -f2)
 	sed -i "s/$oldmac/$1/g" $macpath
 else
@@ -23,5 +21,8 @@ else
 	echo "END" >> $macpath	
 fi
 
+sync
+sleep 0.3s
+echo "sync ok"
 rmmod $drvpath
 insmod $drvpath

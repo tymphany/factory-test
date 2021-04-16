@@ -8,7 +8,6 @@ if [ -z "$1" ]; then
 fi
 
 if [ ! -f "$INFO_PATH/lvp15.txt" ]; then
-   touch $INFO_PATH/lvp15.txti
    echo "Don't have lvp15.txt, touch new "
    echo "MODULE_SN $1" > $INFO_PATH/lvp15.txt
 else
@@ -16,4 +15,5 @@ else
 fi
 
 sync
-echo OK
+sleep 0.3s
+echo "sync ok"

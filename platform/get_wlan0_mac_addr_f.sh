@@ -10,7 +10,7 @@ if [ -e $macpath ]; then
 else
 	echo "Wlan0 using default mac address now"
 fi
-# temporary disable nvram for EVT stage
-# nvram read WLAN0_MAC_ADDR
-#sed -n "8p" $1
-#echo " "
+
+sync
+sleep 0.3s
+echo "sync ok"
