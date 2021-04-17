@@ -9,7 +9,7 @@ if [ -z "$1" ]; then
 fi
 
 if [ -e $macpath ]; then
-        rm /persist/factory/wlan/wlan_mac.bin
+        > $macpath
         write_addr=`echo $1 | sed 's/://g'`
         echo $write_addr
         echo "Intf0MacAddress=$write_addr" > $macpath
