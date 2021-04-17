@@ -23,7 +23,7 @@ echo $1 > /persist/factory/bluetooth/bdaddr.txt
 
 sync
 sleep 0.3
-echo "sync ok"
+echo "sync"
 adk-message-send 'connectivity_bt_disable{}'
 
 sleep 3s

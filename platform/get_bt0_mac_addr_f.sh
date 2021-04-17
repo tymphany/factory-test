@@ -4,4 +4,4 @@
 cat /persist/factory/bluetooth/bdaddr.txt
 sync
 sleep 0.3s
-echo "sync ok"
+echo "sync"

@@ -16,4 +16,4 @@ fi
 
 sync
 sleep 0.3s
-echo "sync ok"
+echo "sync"
