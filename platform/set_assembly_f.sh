@@ -6,6 +6,7 @@ if [ -z "$2" ]; then
 fi
 
 sed -i "2s/.*/ASSEMBLY $1/g" $2
-#echo "$1" > /data/sn.txt
+echo "$1" > /data/sn.txt
+sync
 #nvram write ASSEMBLY $1
 
