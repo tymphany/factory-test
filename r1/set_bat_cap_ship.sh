@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo $1 > /dev/shm/shipment_SOC
+adk-message-send 'system_mode_management{name:"BatAct::setChargeLimit:80"}'
 
 echo "done"
 
