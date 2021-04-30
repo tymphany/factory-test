@@ -16,4 +16,5 @@ rm -f /data/LOGs.txt
 rm -f /data/tps65987-log.txt
 rm -f /data/ota-file/AMPFailLog
 echo -35 > /data/volume_db
+/etc/exitscripts/board-script/resetCharger.sh
 echo "OK"
