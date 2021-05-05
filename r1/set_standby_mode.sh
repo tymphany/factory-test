@@ -1,5 +1,5 @@
 #set standby mode 
-adk-message-send 'button_long_hold {button: "PLAYPAUSE"}'
+adk-message-send 'system_mode_management{name: "btman::gotoStandby"}'
 
 if [ $? -eq 0 ]; 
 then
