@@ -2,7 +2,8 @@
 #    Gsensor Direction Get
 #
 #! /bin/sh
-
+modprobe -r st_lsm6dso_i2c
+modprobe st_lsm6dso_i2c
 value=0
 for i in `seq 5`
 do
