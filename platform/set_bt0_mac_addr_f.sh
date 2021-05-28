@@ -19,15 +19,9 @@ if [ ! -e /persist/factory/bluetooth/bdaddr.txt ]; then
         touch /persist/factory/bluetooth/bdaddr.txt
 fi
 
+echo $1 > /persist/factory/product-message/lvp15_bdaddr.txt
 echo $1 > /persist/factory/bluetooth/bdaddr.txt
 
 sync
 sleep 0.3
 echo "sync"
-adk-message-send 'connectivity_bt_disable{}'
-
-sleep 3s
-
-adk-message-send 'connectivity_bt_enable{}'
-
-

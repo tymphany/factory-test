@@ -23,6 +23,7 @@ else
 	echo "END" >> $macpath	
 fi
 
+echo $1 > /persist/factory/product-message/lvp15_wlan0.txt
 sync
 sleep 0.3s
 echo "sync"
