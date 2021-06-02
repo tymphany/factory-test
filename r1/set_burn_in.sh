@@ -6,6 +6,8 @@
 SHELL_FOLD=$(dirname $0)
 BASE_FOLD=$SHELL_FOLD/..
 
+adk-message-send 'system_mode_management{name:"BatAct::setChargeLimit:80"}'
+
 echo 0   > /sys/class/leds/CONNECT_g/brightness
 echo 255 > /sys/class/leds/CONNECT_b/brightness
 
