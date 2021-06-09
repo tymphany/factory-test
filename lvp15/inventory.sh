@@ -8,6 +8,9 @@
 # i2c-2 22 PA3-MA12070 \n
 # i2c-3 c8 VLED-IS31FL3196A \n
 # i2c-3 ce KB-LED-IS31FL3196A 
+# i2c-3 10 MFI
+# i2c-3 0b BATTERY
+# i2c-3 6b BQ
 # EOF
 # ) > $checklist
 SHELL_FOLD=$(dirname $0)
